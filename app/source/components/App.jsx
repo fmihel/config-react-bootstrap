@@ -9,8 +9,18 @@ export class App extends React.Component {
 
     render() {
         return (
-            <div id='app' style={{ ...flex('horiz stretch'), padding: 10 }}>
-                App
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                       react
+                    </div>
+                    <div className="col">
+                        bootstrap
+                    </div>
+                    <div className="col">
+                        ok
+                    </div>
+                </div>
             </div>
         );
     }

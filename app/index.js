@@ -5,5 +5,5 @@ import ReacDOM from 'react-dom';
 import { App } from 'components/App.jsx';
 
 $(() => {
-    // ReacDOM.render(<App/>, DOM('#page'));
+    ReacDOM.render(<App/>, DOM('#app'));
 });
