@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
-import { flex, binds, JX } from 'fmihel-browser-lib';
+import {
+    flex, binds, JX, dvc,
+} from 'fmihel-browser-lib';
 
 
 export class App extends React.Component {
@@ -18,7 +20,13 @@ export class App extends React.Component {
     }
 
     onCollapse() {
-        this.$get('#panel').toggle(200, () => { this.$get('.btn-collapse').toggleClass('fa-flip-horizontal'); });
+        /** смещение кнопки по горизонтали, если присутствует скролинг */
+        let css = { right: '0px' };
+        const c = this.$get('.content');
+        if ((b.hasClass('fa-flip-horizontal')) && (!dvc.mobile)) {
+            if (c[0].scrollHeight > c[0].clientHeight) css = { right: '0.95rem' };
+        }
+        b.css(css);
     }
 
     componentDidMount() {
