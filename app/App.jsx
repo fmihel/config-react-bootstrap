@@ -43,8 +43,8 @@ export class App extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row" style={{ ...flex('stretch') }}>
-                        <div className="col content">
+                    <div className="row content" style={{ ...flex('stretch') }}>
+                        <div className="col">
                         place test content in this
                         </div>
                     </div>
