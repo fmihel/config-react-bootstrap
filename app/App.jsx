@@ -21,12 +21,17 @@ export class App extends React.Component {
 
     onCollapse() {
         /** смещение кнопки по горизонтали, если присутствует скролинг */
-        let css = { right: '0px' };
-        const c = this.$get('.content');
-        if ((b.hasClass('fa-flip-horizontal')) && (!dvc.mobile)) {
-            if (c[0].scrollHeight > c[0].clientHeight) css = { right: '0.95rem' };
-        }
-        b.css(css);
+        this.$get('#panel').toggle(200, () => {
+            const b = this.$get('.btn-collapse');
+            b.toggleClass('fa-flip-horizontal');
+
+            const css = { right: '0px' };
+            const c = this.$get('.content');
+            if ((b.hasClass('fa-flip-horizontal')) && (!dvc.mobile)) {
+                if (c[0].scrollHeight > c[0].clientHeight) css.right = '0.95rem';
+            }
+            c.css(css);
+        });
     }
 
     componentDidMount() {
