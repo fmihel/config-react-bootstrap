@@ -27,9 +27,9 @@ export default class AppFrame extends React.Component {
             const css = { right: '0px' };
             const c = this.$get('.content');
             if ((b.hasClass('fa-flip-horizontal')) && (!dvc.mobile)) {
-                if (c[0].scrollHeight > c[0].clientHeight) css.right = '0.95rem';
+                if (c[0].scrollHeight > c[0].clientHeight) css.right = '1rem';
             }
-            c.css(css);
+            b.css(css);
         });
     }
 
