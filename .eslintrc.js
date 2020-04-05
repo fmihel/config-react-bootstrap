@@ -42,6 +42,8 @@ module.exports = {
         "import/prefer-default-export":'off',
         'import/extensions':'off', 
         'import/no-unresolved':'off',
+        'no-underscore-dangle':'off',
+        'max-len':'off',
         "indent": [
             "error",
             4
