@@ -32,21 +32,25 @@ class Debug extends React.Component {
         this.onMouseLeave();
     }
 
+    toScreen(coord, area) {
+        const screen = JX.screen();
+        const out = { ...coord };
+        if (screen.w < coord.x + area.w) out.x = screen.w - area.w;
+        if (screen.h < coord.y + area.h) out.y = screen.h - area.h;
+        if (screen.x > coord.x) out.x = screen.x;
+        if (screen.y > coord.y) out.y = screen.y;
+        return out;
+    }
 
     onMouseMove() {
         if (this.move) {
             this.setState((prev) => {
                 const current = JX.mouse();
-                const screen = JX.screen();
                 const area = JX.pos(this.$debug[0]);
-                const coord = {
+                const coord = this.toScreen({
                     x: prev.x + current.x - this.mouse.x,
                     y: prev.y + current.y - this.mouse.y,
-                };
-                if (screen.w < coord.x + area.w) coord.x = screen.w - area.w;
-                if (screen.h < coord.y + area.h) coord.y = screen.h - area.h;
-                if (screen.x > coord.x) coord.x = screen.x;
-                if (screen.y > coord.y) coord.y = screen.y;
+                }, area);
 
                 this.mouse = current;
                 return { ...prev, ...coord };
@@ -85,6 +89,15 @@ class Debug extends React.Component {
             x: this.screen.w - pos.w - 20,
             y: this.screen.h - pos.h - 20,
         });
+    }
+
+    componentDidUpdate() {
+        const coord = { ...this.state };
+        const area = JX.pos(this.$debug[0]);
+        const inCoord = this.toScreen(coord, area);
+        if ((coord.x !== inCoord.x) || (coord.y !== inCoord.y)) {
+            this.setState(inCoord);
+        }
     }
 
     render() {
