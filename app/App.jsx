@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import {
-    flex, binds, JX, dvc, ut,
+    binds, ut,
 } from 'fmihel-browser-lib';
 import { connect } from 'react-redux';
 import Debug from 'COMPONENTS/Debug/Debug.jsx';
@@ -28,7 +28,7 @@ class App extends React.Component {
                         <button onClick={this.onPress} className="btn btn-secondary btn-sm"><i className="far fa-address-book"></i> press</button>
                     </div>
                     <div>
-                        Content
+                        {this.props.app.ContentText}
                     </div>
                 </AppFrame>
                 <Debug/>
@@ -38,7 +38,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    reduxData: state,
+    app: state.app,
 });
 
 export default connect(mapStateToProps)(App);
