@@ -54,7 +54,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "bootstrap": "^4.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fmihel-browser-lib": "^1.4.15",
     "fmihel-polyfills": "^0.3.0",
     "fmihel-redux-wrapper": "^1.1.2",
